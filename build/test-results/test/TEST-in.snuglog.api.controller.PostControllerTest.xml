@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="in.snuglog.api.controller.PostControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-10-30T15:03:59" hostname="JustDoIt" time="0.399">
+  <properties/>
+  <testcase name="/posts 요청시 Hello World를 출력한다." classname="in.snuglog.api.controller.PostControllerTest" time="0.399"/>
+  <system-out><![CDATA[00:03:59.429 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [in.snuglog.api.controller.PostControllerTest]: PostControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:03:59.472 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration in.snuglog.api.SnuglogApplication for test class in.snuglog.api.controller.PostControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.5)
+
+2023-10-31T00:03:59.594+09:00  INFO 13594 --- [    Test worker] i.s.api.controller.PostControllerTest    : Starting PostControllerTest using Java 17.0.9 with PID 13594 (started by sanghoon in /Users/sanghoon/IdeaProjects/snuglog)
+2023-10-31T00:03:59.595+09:00  INFO 13594 --- [    Test worker] i.s.api.controller.PostControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2023-10-31T00:03:59.894+09:00  INFO 13594 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-10-31T00:03:59.894+09:00  INFO 13594 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-10-31T00:03:59.895+09:00  INFO 13594 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2023-10-31T00:03:59.905+09:00  INFO 13594 --- [    Test worker] i.s.api.controller.PostControllerTest    : Started PostControllerTest in 0.408 seconds (process running for 0.789)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
