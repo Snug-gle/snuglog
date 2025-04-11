@@ -1,0 +1,15 @@
+# Default Git attributes file
+/gradlew text eol=lf
+*.jar binary
+
+# 모든 텍스트 파일은 Unix 스타일 LF 사용
+* text=auto eol=lf
+
+# 윈도우용 스크립트 파일만 CRLF 유지
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 바이너리는 줄바꿈 변환 없이 처리
+*.png binary
+*.jpg binary
+*.pdf binary
