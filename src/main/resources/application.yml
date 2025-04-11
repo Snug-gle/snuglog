@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: "snugLog"
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
