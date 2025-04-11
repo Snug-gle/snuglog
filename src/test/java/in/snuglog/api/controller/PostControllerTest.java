@@ -1,16 +1,17 @@
 package in.snuglog.api.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 class PostControllerTest {
@@ -21,21 +22,23 @@ class PostControllerTest {
     @Test
     @DisplayName("/posts 요청시 Hello World를 출력한다.")
     void test() throws Exception {
-        // 글 제목
-        // 글 내용
-
-        // expected
-        // Content-Type(http 요청 주고 받을때)
-        //      application/json
-        //      x-www-form-urlencoded, text/html;charset=UTF-8
-
-        mockMvc.perform(
-                    get("/v1/posts")
-                    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+        mockMvc.perform(post("/v1/posts")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"title\":\"제목\", \"content\":\"내용\"}")
                 )
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hello World"))
-                .andDo(print()
-        );
+                .andExpect(content().string("PostCreate(title=제목, content=내용)"))
+                .andDo(print());
+    }
+    @Test
+    @DisplayName("/posts 요청시 Title 값은 필수다.")
+    void test2() throws Exception {
+        mockMvc.perform(post("/v1/posts")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"title\":null, \"content\":\"내용\"}")
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("제목을 입력해주세요."))
+                .andDo(print());
     }
 }

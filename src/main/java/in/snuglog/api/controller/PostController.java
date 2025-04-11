@@ -1,11 +1,24 @@
 package in.snuglog.api.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import in.snuglog.api.request.PostCreate;
+import jakarta.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 public class PostController {
+
+    private final Logger logger = LoggerFactory.getLogger(PostController.class);
 
     /**
      * ssr -> jsp, thymeleaf, mustache, freemarker
@@ -19,15 +32,21 @@ public class PostController {
      *
      */
 
-    /**
-     * 글 등록
-     *
-     * @return
-     */
-//    @PostMapping("/v1/posts")
+    @PostMapping("/v1/posts")
+    public Map<String, String> post(@RequestBody @Valid PostCreate postCreate,
+        BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()) {
+            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+            FieldError firstFieldError = fieldErrors.getFirst();
+            String fieldName = firstFieldError.getField();
+            String errorMessage = firstFieldError.getDefaultMessage();
 
-    @GetMapping("/v1/posts")
-    public String get() {
-        return "Hello World";
+            Map<String, String> error = new HashMap<>();
+            error.put(fieldName, errorMessage);
+            return error;
+        }
+        logger.info("params : {}", postCreate);
+        return Map.of();
     }
 }
